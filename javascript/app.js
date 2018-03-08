@@ -15,7 +15,7 @@ var database=firebase.database();
 // GLOGAL VARIABLES
 
 var apiKey = "52d1c20852064e27ad9777ae8ab088d7";
-var apiKeyFB = "0a913679-6152-489a-a67c-6a70aaa1cb65"; // Priya's key
+var apiKeyFB = "f57d57d5-f785-4974-bf9b-a7261aabfce0"; // Priya's key
 	//Mark's key: "4d9c7a74-a2a5-497c-8c59-7dd2f5113ce3";
 var newsSubject = "";
 var newsSource1 = "";
@@ -113,7 +113,7 @@ function newsFrontBuilder(results, front, articleDiv) {
 		likeDiv.addClass("likeDiv");
 		var buttonDiv=$("<div>");
 		buttonDiv.addClass("btnDiv");
-		buttonDiv.append("<button class='btn toggle frToggle'>See Other News Stories</button>");
+		buttonDiv.append("<button class='btn toggle frToggle'>More Stories</button>");
 	
 	if(results != "") {
 		console.log("news title 1  "  + newsTitle1);
@@ -265,7 +265,6 @@ function queryAPI(newsSource1, newsSource2) {
 
 if(lean==="left"){    
     $(".leftArticle").append(article1Div);
-    stateManager.init();
     $(".buttonContainer").css("border-bottom", "1px solid #D0D0D0");
      $(".rightArticle").append(article2Div);
     lean="";
@@ -276,7 +275,6 @@ if(lean==="left"){
 else if (lean==="right"){
     article2Div.addClass("leftInfo");
     $(".leftArticle").append(article2Div);
-    stateManager.init();
     $(".buttonContainer").css("border-bottom", "1px solid #D0D0D0");
     article1Div.addClass("rightInfo");
     $(".rightArticle").append(article1Div);
@@ -358,37 +356,6 @@ function failNoRecord()
 		});
 	});	
 
-// media responsive border
-	
-	var stateManager = (function () {
-	var state = null;
-	var resizePage = function () {
-		if ($('body').width() < 600) {
-			if (state !== "mobile") {
-				displayMobile();
-			}
-		} else {
-			if (state !== "desktop") {
-				displayDesktop();
-			}
-		}
-	};
-	var displayMobile = function () {
-		state = "mobile";
-		$(".leftArticle").css("border-right", "0");
-	};
-	var displayDesktop = function () {
-		state = "desktop";
-		$(".leftArticle").css("border-right", "2px solid #301D6E");
-
-	};
-	return {
-		init: function () {
-			resizePage();
-			$(window).on('resize', resizePage);
-		}
-	};
-}());
 
 // END PAGE LOAD ====================================
 
